@@ -17,10 +17,11 @@ Ext.define('Demo.view.main.Main', {
         'Demo.view.main.MainModel',
         'Demo.view.main.List'
     ],
-    title:'月光',
     controller: 'main',
     viewModel: 'main',
-
+    bind:{
+      title:"{name}"
+    },
     layout: 'border',
     defaults: {
         collapsible: true,
@@ -29,28 +30,28 @@ Ext.define('Demo.view.main.Main', {
     },
     items:[
         {
-            title: 'Menu',
             region:'west',
             floatable: false,
             margin: '5 0 0 0',
             width: 125,
             minWidth: 100,
             maxWidth: 250,
-            collapsed:true
+            collapsed:true,
+            bind:{
+                title:"{text.menutitle}"
+            }
         },
         {
             id:'main',
-            title: 'Main Content',
             collapsible: false,
             region: 'center',
             margin: '5 0 0 0',
             scrollable:true
         },
         {
-            title: 'Search',
             region: 'east',
             margin: '5 0 0 0',
-            width: 250,
+            width: 300,
             items:[
                 {
                     name:'searchtext',
@@ -74,7 +75,10 @@ Ext.define('Demo.view.main.Main', {
                     height: 500,
                     scrollable:true
                 }
-            ]
+            ],
+            bind:{
+                title:"{text.searchtitle}"
+            }
         }
     ]
 });

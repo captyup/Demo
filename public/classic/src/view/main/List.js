@@ -9,7 +9,7 @@ Ext.define('Demo.view.main.List', {
         'Demo.store.SearchResult'
     ],
 
-    title: 'SearchResult',
+    hideHeaders:true,
 
     store: {
         type: 'searchresult'
