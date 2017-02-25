@@ -43,7 +43,8 @@ Ext.define('Demo.view.main.Main', {
             title: 'Main Content',
             collapsible: false,
             region: 'center',
-            margin: '5 0 0 0'
+            margin: '5 0 0 0',
+            scrollable:true
         },
         {
             title: 'Search',
@@ -70,7 +71,8 @@ Ext.define('Demo.view.main.Main', {
                 },
                 {
                     xtype: 'mainlist',
-                    height: 500
+                    height: 500,
+                    scrollable:true
                 }
             ]
         }

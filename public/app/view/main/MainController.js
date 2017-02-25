@@ -15,7 +15,14 @@ Ext.define('Demo.view.main.MainController', {
             {
            loader: {
                url: "/ksana/getText",
-               renderer: "html",
+               renderer: function(loader, response, active) {
+                   var data = JSON.parse(response.responseText);
+                   data.lines[data.hitIndex]=Ext.String.format("<mark>{0}</mark>",data.lines[data.hitIndex]);
+                   loader.getTarget().setHtml(
+                       Ext.String.format("<strong>{0}</strong><pre>{1}</pre>",data.title,data.lines.join("\n"))
+                   );
+                   return true;
+               },
                autoLoad: true,
                params: {
                    hits: record.data.hits

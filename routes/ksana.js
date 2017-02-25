@@ -43,8 +43,7 @@ router.post('/getText', function(req, res, next) {
 
     openCorpus(dbid,function(err,cor){
         cor.getText(util.format("%s%s0100-%s3200",matches[1],matches[2],matches[2]),function(out){
-            out[parseInt(matches[3])-1]="<mark>"+out[parseInt(matches[3])-1]+"</mark>";
-            res.send("<strong>"+cor.getTitle(hits)+"</strong><br>"+out.join("<br>"));
+            res.json({title:cor.getTitle(hits),lines:out,hitIndex:matches[3]-1});
         });
     });
 });
