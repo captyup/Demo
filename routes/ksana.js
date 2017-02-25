@@ -39,9 +39,9 @@ router.get('/search', function(req, res, next) {
 router.post('/getText', function(req, res, next) {
     var hits = req.body.hits;
     var matches= /(\d{1,2}p\d{1,4})(\w{1})(\d{2})(\d{2})/g.exec(hits)
-   // console.log(matches);
+   console.log(hits.match(/\d{1,2}p\d{1,4}/g)+matches[2]+"0100-"+matches[2]+"3200");
     openCorpus(dbid,function(err,cor){
-        cor.getText(hits.match(/\d{1,2}p\d{1,4}/g)+matches[2]+"0100-"+matches[3]+"3200",function(out){
+        cor.getText(hits.match(/\d{1,2}p\d{1,4}/g)+matches[2]+"0100-"+matches[2]+"3200",function(out){
             out[parseInt(matches[3])-1]="<mark>"+out[parseInt(matches[3])-1]+"</mark>";
             res.send("<strong>"+cor.getTitle(hits)+"</strong><br>"+out.join("<br>"));
         });
